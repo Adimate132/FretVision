@@ -1,12 +1,9 @@
+#! python3.11
+
 import cv2
 import os
 import mediapipe as mp
-from mediapipe.tasks.python.vision import (
-    HandLandmarker,
-    HandLandmarkerOptions,
-    HandLandmarkerResult,
-    RunningMode
-)
+from mediapipe.tasks.python.vision import (HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult, RunningMode)
 from mediapipe.tasks.python.core.base_options import BaseOptions
 
 # path to the model file, relative to this script

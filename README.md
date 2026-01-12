@@ -1,76 +1,43 @@
-# FretVision
+# Installation
+1. Install Python 3.11 (64-bit) from python.org
+Make sure to check `“Add Python to PATH”` during installation.
+Verify installation:
+`py -3.11 --version`
+2. Clone the repository 
+cd into FretVision directory
 
-Vision-only guitar chord detection using Python, OpenCV, and MediaPipe.
+3. Install dependencies:
+	`py -3.11 -m pip install --upgrade pip`
+	`py -3.11 -m pip install -r requirements.txt`
 
-## Quick Start (Windows, Python 3.11)
+4. Verify installation:
+`py -3.11 -c "import cv2, mediapipe, numpy; print(cv2.__version__, mediapipe.__version__, numpy.__version__)"`
 
-> These steps create an isolated virtual environment so dependencies work reliably on Windows.
+5. Run the hand tracking demo:
+`py src/hand_tracking.py`
 
-### 1. Install Python
+`Note: If any version issues occur, run w/ python3.11 explicitly:`
+`py -3.11 src/hand_tracking.py`
 
-* Install **Python 3.11 (64-bit)** from python.org
-* Check **“Add Python to PATH”** during install
+A window should pop up utilizing your camera.
+Press q to quit the program.
 
-### 2. Clone the repo
+  
 
-```bash
-git clone <your-repo-url>
-cd FretVision
-```
-
-### 3. Create a virtual environment
-
-```bash
-py -3.11 -m venv venv
-```
-
-### 4. Activate the virtual environment
-
-```bash
-venv\Scripts\activate
-```
-
-You should see `(venv)` at the start of your terminal prompt.
-
-### 5. Install dependencies
-
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-### 6. Verify installation
-
-```bash
-python -c "import cv2, mediapipe, numpy; print(cv2.__version__, mediapipe.__version__, numpy.__version__)"
-```
-
-Expected output:
-
-```
-4.9.0 0.10.31 1.26.4
-```
-
-### 7. Run hand tracking demo
-
-```bash
-python src/hand_tracking.py
-```
-
-Press **ESC** to quit.
-
----
-
-## Requirements
-
+# Requirements
 * Python 3.11 (64-bit)
 * Webcam
+* A 6 string acoustic/classical guitar
+  
+ # Notes
+Python 3.11 is required for MediaPipe stability on Windows.
 
-## Notes
+If multiple Python versions are installed, always use py -3.11 to avoid version mismatches.
 
-* Do **not** commit the `venv/` folder to git
-* If you have a newer system Python installed, the virtual environment ensures FretVision still works
+# Next steps
+This repo is a WIP and so this readme will be updated accordingly.
 
----
-
-Next steps: landmark normalization, finger state detection, fretboard mapping.
+**TO DO:**
+* Landmark normalization
+* Finger state detection
+* Fretboard mapping
