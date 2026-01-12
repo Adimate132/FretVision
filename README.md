@@ -1,3 +1,13 @@
+# Introduction
+
+FretVision is a work-in-progress computer vision project that uses a standard webcam to track a guitarist’s fretting hand and infer chord shapes in real time.
+
+The system is vision-only and does not rely on audio input. It uses Python, OpenCV, and MediaPipe to detect hand landmarks, track finger positions, and map those positions onto a guitar fretboard.
+
+The long-term goal of this project is to reliably identify guitar chords on acoustic, classical, or electric guitars using only visual information. This repository currently focuses on achieving stable, low-latency hand landmark detection as a foundation for future stages such as finger state classification, fretboard mapping, and chord inference.
+
+In the future, audio and visual information could be combined, enabling polyphonic audio discernment to fine-tune chord detection and improve accuracy.
+
 # Installation
 1. Install Python 3.11 (64-bit) from python.org
 Make sure to check `“Add Python to PATH”` during installation.
@@ -27,7 +37,7 @@ Press q to quit the program.
 # Requirements
 * Python 3.11 (64-bit)
 * Webcam
-* A 6 string acoustic/classical guitar
+* A 6 string acoustic/classical/electric guitar
   
  # Notes
 Python 3.11 is required for MediaPipe stability on Windows.
