@@ -1,0 +1,14 @@
+# FretVision dataset configuration for YOLOv8 segmentation
+
+# Paths to image folders
+train: ./data/images/train
+val: ./data/images/val
+
+# Class names
+names:
+  0: fretboard
+
+# Optional metadata for segmentation (YOLOv8 will look for .txt labels in the labels/ folder)
+# The folder structure should mirror images:
+# ./labels/train/*.txt
+# ./labels/val/*.txt

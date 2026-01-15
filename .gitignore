@@ -1,0 +1,22 @@
+# Python compiled files
+__pycache__/
+*.pyc
+
+# Data files
+data/frames/*
+!data/frames/.gitkeep
+data/raw_videos/*
+!data/raw_videos/.gitkeep
+data/images/*
+data/labels/*
+
+# Models / weights
+models/*
+!models/.gitkeep
+
+# YOLO training outputs 
+training/runs/*
+!training/runs/.gitkeep
+
+# Ignore helper batch files in tools folder, but keep the folder
+/tools/*.bat
