@@ -6,7 +6,7 @@ import os
 # -----------------------------
 VIDEO_DIR = "data/raw_videos"  # folder containing your guitar videos
 OUT_DIR = "data/frames"        # folder to save extracted frames
-FPS = 1                        # number of frames per second to extract
+FPS = 30                        # number of frames per second to extract
 
 # -----------------------------
 # PREPARE FOLDERS

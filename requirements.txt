@@ -3,3 +3,4 @@ mediapipe
 numpy
 label-studio
 ultralytics
+opencv-contrib-python
