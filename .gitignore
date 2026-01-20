@@ -42,7 +42,7 @@ models/*
 training/runs/*
 !training/runs/.gitkeep
 
-runs/segment/predict/
+runs/*
 
 # ----------------------------
 
