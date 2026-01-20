@@ -1,9 +1,10 @@
 # Introduction
+![Image of fretboard detection](repo-images\coverimg.jpg)
 FretVision is a work-in-progress computer vision project that uses a standard webcam to track a guitarist’s fretting hand and infer chord shapes in real time.
 
 The system is vision-only and does not rely on audio input. It uses Python, OpenCV, and MediaPipe to detect hand landmarks, track finger positions, and map those positions onto a guitar fretboard.
 
-The long-term goal of this project is to reliably identify guitar chords on acoustic, classical, or electric guitars using only visual information. This repository currently focuses on achieving stable, low-latency hand landmark detection as a foundation for future stages such as finger state classification, fretboard mapping, and chord inference.
+The long-term goal of this project is to reliably identify guitar chords on acoustic, classical, or electric guitars using only visual information. Furthermore, adding interactive overlays onto the fretboard could potentially be explored. This repository currently focuses on achieving stable, low-latency hand landmark detection as a foundation for future stages such as finger state classification, fretboard mapping, and chord inference.
 
 In the future, audio and visual information could be combined, enabling polyphonic audio discernment to fine-tune chord detection and improve accuracy.
 
@@ -78,10 +79,8 @@ See `.gitignore` for details.
 This repo is a WIP and so this readme will be updated accordingly.
 
 **TO DO (rough list):**
-* Add fretboard overlay for visualization
 * Calculate string positions mathematically
 * Detect fingers on the fretboard
-* Detect frets
-* Detect the nut to reliably locate the first fret
+* Detect frets (?)
 * Map fingers to their corresponding fret and string
-* Infer chords from finger positions
+* Infer chords from finger positions (?)
