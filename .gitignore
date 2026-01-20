@@ -1,37 +1,53 @@
+# ----------------------------
+
 # Python compiled files
+
+# ----------------------------
 
 **pycache**/
 *.pyc
 
+# ----------------------------
+
 # Data files
+
+# ----------------------------
 
 data/frames/*
 !data/frames/.gitkeep
+
 data/raw_videos/*
 !data/raw_videos/.gitkeep
-data/more_videos
+
+data/more_videos/
+
 data/images/*
 data/labels/*
 
+# ----------------------------
+
 # Models / weights
+
+# ----------------------------
 
 models/*
 !models/.gitkeep
 
+# ----------------------------
+
 # YOLO training outputs
+
+# ----------------------------
 
 training/runs/*
 !training/runs/.gitkeep
 
-# Explicitly track YOLO runs
+runs/segment/predict/
 
-!runs/
-!runs/**
+# ----------------------------
 
-# Ignore specific prediction output only
+# Tools
 
-runs/segment/predict
-
-# Ignore helper batch files in tools folder, but keep the folder
+# ----------------------------
 
 /tools/*.bat
