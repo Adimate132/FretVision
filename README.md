@@ -79,8 +79,7 @@ See `.gitignore` for details.
 This repo is a WIP and so this readme will be updated accordingly.
 
 **TO DO (rough list):**
-* Calculate string positions mathematically
-* Detect fingers on the fretboard
-* Detect frets (?)
+* Calculate fret positions
+* Detect fingers on the fretboard (w/ mediapipe or custom detection)
 * Map fingers to their corresponding fret and string
-* Infer chords from finger positions (?)
+* Infer chords from finger positions 
