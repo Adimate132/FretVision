@@ -27,7 +27,7 @@ cd into FretVision directory
 5. Run the hand tracking demo:
 `py src/hand_tracking.py`
 
-`Note: If any version issues occur, run w/ python3.11 explicitly:`
+`Note: If any version issues occur, ensure you are running w/ python3.11 explicitly:`
 `py -3.11 src/hand_tracking.py`
 
 A window should pop up utilizing your camera.
@@ -39,24 +39,22 @@ Press q to quit the program.
 * A 6 string acoustic/classical/electric guitar
 
 ## Dataset & Labeling
-- Images were labeled using **Supervisely**
+- Images were labeled using **Supervisely** & **CVAT**
 - Export format: **YOLOv8 segmentation**
-- Only labeled images were used for training
-- Unlabeled images were excluded to avoid background bias
+- Dataset used contains **one object per frame**. 
 
 Dataset paths are defined in `data.yaml`.
 
 ## Training
-Segmentation training was run with:
+Pose training is run via CLI.
+Example: `yolo task=pose mode=train model=MODEL_PATH_HERE data=data.yaml epochs=50 imgsz=960 batch=8`
 
-`yolo task=segment mode=train model=yolov8n-seg.pt data=data.yaml epochs=50 imgsz=960 batch=8`
-
-Training outputs are generated under `runs/segment/train/` and are not committed.
+Training outputs are generated under `runs/pose/...` and are not committed.
 
 ## Inference (Single Image)
 Run segmentation on a single image:
 
-`yolo task=segment mode=predict model=runs\segment\train\weights\best.pt source=data\frames\pathToImg conf=0.3 save=True show=True`
+`yolo task=pose mode=predict model=MODEL_PATH_HERE source=data\frames\example.img conf=0.3 save=True show=True`
 
 For batch inference, `source` may be a folder instead of a single image.
 
@@ -66,10 +64,10 @@ Trained weights are stored in:
   
 # Notes
 - Python 3.11 is required for MediaPipe stability on Windows.
-- If multiple Python versions are installed, always use py -3.11 to avoid version mismatches.
+- If multiple Python versions are installed, always use py -3.11 to avoid version mismatches or add Python 3.11 to your path.
 
 - The model may output multiple detections for a single fretboard; this is handled via confidence filtering and post-processing.
-- String positions are inferred mathematically from the fretboard geometry rather than being explicitly labeled.
+- String & fret positions are inferred mathematically from the fretboard geometry rather than being explicitly labeled.
 
 ## Git Ignore
 Training data, raw videos, YOLO runs, and caches are excluded by design.  
@@ -79,7 +77,8 @@ See `.gitignore` for details.
 This repo is a WIP and so this readme will be updated accordingly.
 
 **TO DO (rough list):**
-* Calculate fret positions
-* Detect fingers on the fretboard (w/ mediapipe or custom detection)
+* Calculate fret positions & overlay
+* Detect fingers consistently on the fretboard (w/ mediapipe or custom detection)
 * Map fingers to their corresponding fret and string
-* Infer chords from finger positions 
+* Infer chords from finger positions
+* Consider how to implement interval detection based off of root note (assuming lowest note is root, NO INVERSIONS!).
