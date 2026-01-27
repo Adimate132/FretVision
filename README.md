@@ -14,34 +14,32 @@ Make sure to check `“Add Python to PATH”` during installation.
 Verify installation:
 `py -3.11 --version`
 
-2. Clone the repository 
-cd into FretVision directory
+2. Clone the repository & cd into the `/FretVision` directory
 
 3. Install dependencies:
-	`py -3.11 -m pip install --upgrade pip`
-	`py -3.11 -m pip install -r requirements.txt`
+	`py -m pip install -r requirements.txt`
 
-4. Verify installation:
-`py -3.11 -c "import cv2, mediapipe, numpy; print(cv2.__version__, mediapipe.__version__, numpy.__version__)"`
-
-5. Run the hand tracking demo:
+4. Run the hand tracking (or similar) demos with:
 `py src/hand_tracking.py`
-
-`Note: If any version issues occur, ensure you are running w/ python3.11 explicitly:`
-`py -3.11 src/hand_tracking.py`
 
 A window should pop up utilizing your camera.
 Press q to quit the program.
+
+`Note: If any version issues occur, ensure you are running w/ python3.11 explicitly:`
+`py -3.11 [...]`
+
 
 # Requirements
 * Python 3.11 (64-bit)
 * Webcam
 * A 6 string acoustic/classical/electric guitar
+* Preferrably a hand or two
 
 ## Dataset & Labeling
 - Images were labeled using **Supervisely** & **CVAT**
-- Export format: **YOLOv8 segmentation**
-- Dataset used contains **one object per frame**. 
+- Export format: **YOLOv8 pose**
+- Dataset used contains a maximum of **one object per frame**. 
+- If you will be training it further for your own use it is advised to stick to this constraint. 
 
 Dataset paths are defined in `data.yaml`.
 
@@ -52,7 +50,7 @@ Example: `yolo task=pose mode=train model=MODEL_PATH_HERE data=data.yaml epochs=
 Training outputs are generated under `runs/pose/...` and are not committed.
 
 ## Inference (Single Image)
-Run segmentation on a single image:
+Run pose estimation on a single image:
 
 `yolo task=pose mode=predict model=MODEL_PATH_HERE source=data\frames\example.img conf=0.3 save=True show=True`
 
@@ -67,7 +65,8 @@ Trained weights are stored in:
 - If multiple Python versions are installed, always use py -3.11 to avoid version mismatches or add Python 3.11 to your path.
 
 - The model may output multiple detections for a single fretboard; this is handled via confidence filtering and post-processing.
-- String & fret positions are inferred mathematically from the fretboard geometry rather than being explicitly labeled.
+- String & fret positions are inferred mathematically from the fretboard geometry rather than being explicitly detected.
+- Models are **ONLY** trained to detect fretboards, from the left and right edge of the nut to the left and right edge of the last fret.
 
 ## Git Ignore
 Training data, raw videos, YOLO runs, and caches are excluded by design.  
@@ -75,6 +74,9 @@ See `.gitignore` for details.
 
 # Next steps
 This repo is a WIP and so this readme will be updated accordingly.
+
+# Contribution
+- Methods TBD
 
 **TO DO (rough list):**
 * Calculate fret positions & overlay
