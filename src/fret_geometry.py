@@ -1,3 +1,4 @@
+# overlay from model + string estimation
 import cv2
 import numpy as np
 from ultralytics import YOLO
@@ -34,7 +35,7 @@ while cap.isOpened():
 
             num_strings = 6
             
-            # 2. Draw the 6 Inset Strings
+            # 2. Draw the 6 Inset Strings (so the 1st and 6th strings aren't on the edge of the board)
             for i in range(num_strings):
                 # Calculate 't' so it stays between STRING_INSET and (1 - STRING_INSET)
                 # Example: if inset is 0.1, t moves from 0.1 to 0.9

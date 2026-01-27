@@ -1,3 +1,4 @@
+# Overlay for model (basic detector)
 import cv2
 from ultralytics import YOLO
 
