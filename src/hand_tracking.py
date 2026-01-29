@@ -62,26 +62,26 @@ class SmoothHandTracker:
             (0, 17), (17, 18), (18, 19), (19, 20), (5, 9), (9, 13), (13, 17)
         ]
 
-        # 1. Draw connections (lines remain constant thickness for clarity)
+        # 1. Draw connections in BLUE (255, 0, 0)
         for start_idx, end_idx in connections:
             p1 = (int(landmarks[start_idx].x * w), int(landmarks[start_idx].y * h))
             p2 = (int(landmarks[end_idx].x * w), int(landmarks[end_idx].y * h))
-            cv2.line(frame, p1, p2, (0, 255, 0), 2)
+            cv2.line(frame, p1, p2, (255, 0, 0), 2) # Changed from green to blue
 
-        # 2. Draw landmarks with Dynamic Scaling
+        # 2. Draw landmarks with Dynamic Scaling and a MAX cap
         for lm in landmarks:
             cx, cy = int(lm.x * w), int(lm.y * h)
             
-            # DEPTH MATH: 
-            # We take the Z value (usually between -0.1 and 0.1)
-            # We scale it so closer points (negative Z) are larger.
-            # Base size 5, minus the Z value scaled by 40.
-            # Use max() to ensure radius never drops below 1.
-            dynamic_radius = max(1, int(6 - (lm.z * 40)))
+            # Base logic: closer points (negative Z) are larger.
+            raw_radius = int(6 - (lm.z * 40))
+            
+            # CLAMPING: 
+            # Ensure it's at least 1px and no larger than 8px
+            dynamic_radius = max(1, min(raw_radius, 8)) 
 
-            # Draw the point
+            # Draw the point (Blue outline, White fill)
             cv2.circle(frame, (cx, cy), dynamic_radius, (255, 255, 255), cv2.FILLED)
-            cv2.circle(frame, (cx, cy), dynamic_radius, (0, 255, 0), 1)
+            cv2.circle(frame, (cx, cy), dynamic_radius, (255, 0, 0), 1)
 
 def main():
     cap = cv2.VideoCapture(0)
