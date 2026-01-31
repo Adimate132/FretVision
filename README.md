@@ -79,7 +79,6 @@ This repo is a WIP and so this readme will be updated accordingly.
 - Methods TBD
 
 **TO DO (rough list):**
-* Calculate fret positions & overlay
 * Detect fingers consistently on the fretboard (w/ mediapipe or custom detection)
 * Map fingers to their corresponding fret and string
 * Infer chords from finger positions
